@@ -1,0 +1,3 @@
+@for (stock of $stocks(); track stock.name) {
+  <mb-stock-card [stock]="stock" (toggle)="onStockToggle($event, stock.name)" class="stocks__card" />
+}
