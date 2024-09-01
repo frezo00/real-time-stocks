@@ -17,7 +17,7 @@
 
 <ng-template #dateRangePricesTemplate let-dateRangePrices let-title="title" let-desktopOnly="desktopOnly">
   <section [class.stock-card-range--hidden]="desktopOnly" class="stock-card-range">
-    <small>{{ title | uppercase }}</small>
+    <small class="stock-card-range__label">{{ title | uppercase }}:</small>
     <span>{{ dateRangePrices.low }} - {{ dateRangePrices.high }}</span>
   </section>
 </ng-template>

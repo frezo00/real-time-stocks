@@ -1,0 +1,143 @@
+// =======================================================================================================================
+//   TYPOGRAPHY - Variables and maps for 'color', 'font-family', 'font-size', 'font-weight' and 'line-height' properties
+// =======================================================================================================================
+
+// ---------------
+//   TEXT COLORS
+// ---------------
+$text-colors: (
+  light: neutral-color(0),
+  dark: neutral-color(4),
+  inherit: inherit,
+);
+
+@function text-color($text-color) {
+  @return map-contains($text-colors, $text-color);
+}
+
+// -------------
+//   FONT SIZE
+// -------------
+$font-sizes: (
+  xxsmall: px-to-rem(10px),
+  xsmall: px-to-rem(12px),
+  small: px-to-rem(14px),
+  regular: px-to-rem(16px),
+  medium: px-to-rem(18px),
+  large: px-to-rem(20px),
+  xlarge: px-to-rem(24px),
+  xxlarge: px-to-rem(36px),
+  inherit: inherit,
+);
+
+@function font-size($size) {
+  @return map-contains($font-sizes, $size);
+}
+
+// ----------------
+//   FONT WEIGHTS
+// ----------------
+$font-weights: (
+  light: 300,
+  regular: 400,
+  medium: 500,
+  bold: 700,
+  inherit: inherit,
+);
+
+@function font-weight($weight) {
+  @return map-contains($font-weights, $weight);
+}
+
+// ---------------
+//   LINE HEIGHT
+// ---------------
+$line-heights: (
+  small: 1.2,
+  regular: 1.5,
+  large: 1.75,
+  double: 2,
+  normal: normal,
+);
+
+@function line-height($height) {
+  @return map-contains($line-heights, $height);
+}
+
+// --------------
+//   TEXT-ALIGN
+// --------------
+$text-aligns: (
+  left: left,
+  center: center,
+  right: right,
+  inherit: inherit,
+);
+
+@function text-align($text-align) {
+  @return map-contains($text-aligns, $text-align);
+}
+
+// ---------------
+//   FONT FAMILY
+// ---------------
+$font-families: (
+  primary: var(--font-family-primary),
+);
+
+@function font-family($family) {
+  @return map-contains($font-families, $family);
+}
+
+// -------------------------------------------------------------------------------------------------------------------------
+//   TYPOGRAPHY MIXIN - Mixin for setting 'color', 'font-size', 'font-weight', 'font-family' and 'text-align' for the text
+// -------------------------------------------------------------------------------------------------------------------------
+@mixin typography(
+  $color: inherit,
+  $size: false,
+  $weight: false,
+  $line-height: false,
+  $family: false,
+  $text-align: false
+) {
+  color: text-color($color);
+
+  @if $size {
+    font-size: font-size($size);
+  }
+
+  @if $weight {
+    font-weight: font-weight($weight);
+  }
+
+  @if $line-height {
+    line-height: line-height($line-height);
+  }
+
+  @if $family {
+    font-family: font-family($family);
+  }
+
+  @if $text-align {
+    text-align: text-align($text-align);
+  }
+}
+
+// ----------------------------------------------------------
+//   TRUNCATE - Mixin that sets stylings for truncated text
+// ----------------------------------------------------------
+@mixin truncate($number-of-lines: 1, $boundary: 100%) {
+  max-width: $boundary;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @if $number-of-lines > 1 {
+    display: -webkit-box;
+    -webkit-line-clamp: $number-of-lines;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+  } @else {
+    display: inline-block;
+    white-space: nowrap;
+  }
+}

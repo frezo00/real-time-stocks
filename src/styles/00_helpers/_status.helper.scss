@@ -1,0 +1,12 @@
+// -----------------
+//   STATUS COLORS
+// -----------------
+$status-colors: (
+  red: var(--status-red),
+  green: var(--status-green),
+  gray: var(--status-gray),
+);
+
+@function status-color($status-color) {
+  @return map-contains($status-colors, $status-color);
+}

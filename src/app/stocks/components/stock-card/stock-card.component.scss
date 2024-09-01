@@ -1,42 +1,42 @@
+@import 'helpers';
+
 :host {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
+  @include flex(column, $align: center, $gap: spacing(4x));
+  @include transition(background-color);
   width: 100%;
-  padding: 12px 20px;
-  border-radius: 8px;
-  background-color: #ecf0f1;
-  transition: background-color ease-in-out 0.3s;
+  padding: spacing(6x) spacing(5x);
+  border-radius: border-radius(normal);
+  background-color: status-color(gray);
 
   &.red {
-    background-color: #e94b35;
+    background-color: status-color(red);
   }
 
   &.green {
-    background-color: #1ece6d;
+    background-color: status-color(green);
   }
 }
 
 .stock-card {
   &__price {
-    font-size: 20px;
+    font-size: font-size(large);
   }
 
   &__statistics {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    @include flex(column, $align: center);
   }
 
   &-range {
-    display: flex;
-    flex-direction: column;
+    @include flex(column, $align: center);
 
     &--hidden {
-      @media only screen and (max-width: 1024px) {
+      @include media(md, max) {
         display: none;
       }
+    }
+
+    &__label {
+      @include typography(inherit, xsmall, bold);
     }
   }
 }

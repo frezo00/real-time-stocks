@@ -1,0 +1,14 @@
+// -----------------
+//   NEUTRAL COLOR
+// -----------------
+$neutral-colors: (
+  0: var(--neutral-0),
+  1: var(--neutral-1),
+  2: var(--neutral-2),
+  3: var(--neutral-3),
+  4: var(--neutral-4),
+);
+
+@function neutral-color($neutral-color) {
+  @return map-contains($neutral-colors, $neutral-color);
+}

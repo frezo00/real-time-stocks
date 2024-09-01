@@ -1,11 +1,12 @@
+@import 'helpers';
+
 :host {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  @include flex(row, $gsb: 0 1 0, $gap: spacing(5x), $wrap: wrap);
+  padding: spacing(6x);
 }
 
 .stocks {
   &__card {
-    max-width: 120px;
+    max-width: px-to-rem(200px);
   }
 }

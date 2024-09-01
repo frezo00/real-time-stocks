@@ -1,7 +1,7 @@
 @for (stock of $stocks(); track stock.name) {
   <mb-stock-card
     [stock]="stock"
-    [(isActive)]="stock.isActive"
+    [isActive]="stock.isActive"
     (isActiveChange)="onStockToggle($event, stock.name)"
     class="stocks__card"
   />

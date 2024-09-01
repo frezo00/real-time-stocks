@@ -1,0 +1,135 @@
+// ************************************
+//   BASE - Base functions and mixins
+// ************************************
+
+// ========================================
+//   FUNCTIONS - Various helper functions
+// ========================================
+
+// ------------------------------------------------------------------------
+//   MAP-CONTAINS - Checks if a '$key' is contained inside the '$map' map
+// ------------------------------------------------------------------------
+@function map-contains($map, $key) {
+  @if map-has-key($map, $key) {
+    @return map-get($map, $key);
+  }
+  @warn "Unknown `#{$key}` in the `#{$map}` map.";
+  @return null;
+}
+
+// ------------------------------------------------------
+//   PX-to-REM - Transforms 'px' value into 'rem' value
+// ------------------------------------------------------
+@function px-to-rem($pixels) {
+  $font-size-base: 16px;
+  @return calc($pixels / $font-size-base * 1rem);
+}
+
+// ==================================
+//   MIXINS - Various helper mixins
+// ==================================
+
+// -----------------------------------------------
+//   FLEX - Mixin for setting Flexbox properties
+// -----------------------------------------------
+@mixin flex($direction: false, $justify: false, $align: false, $gsb: false, $gap: false, $wrap: false) {
+  display: flex;
+
+  @if $direction {
+    flex-direction: $direction;
+  }
+
+  @if $justify {
+    justify-content: $justify;
+  }
+
+  @if $align {
+    align-items: $align;
+  }
+
+  @if $gsb {
+    flex: $gsb;
+  }
+
+  @if $gap {
+    gap: $gap;
+  }
+
+  @if $wrap {
+    flex-wrap: $wrap;
+  }
+}
+
+// ----------------------------------------------------------------
+//   TRANSITION - Mixin for setting the 'transition' property
+//   How to use:
+//
+//   selector {
+//     // Pass in just CSS property name(s) separated with comma:
+//     @include transition(color, background-color);
+//   }
+// ----------------------------------------------------------------
+
+@mixin transition($args...) {
+  $transition-property: all;
+  $transition-duration: 0.3s;
+  $transition-timing: ease-in-out;
+  $transition-delay: 0s;
+  $props: ();
+
+  @each $prop in $args {
+    @if type-of($prop) == string {
+      $props: append($props, $prop $transition-duration $transition-timing, 'comma');
+    } @else {
+      $props: append($props, $prop, 'comma');
+    }
+  }
+  @if $props == () {
+    $props: append($props, all $transition-duration $transition-timing, 'comma');
+  }
+  transition: $props;
+}
+
+// ----------------------------------------------------------------------------------------------
+//   SQUARE - Mixin for setting 'width', 'min-width', 'height' and 'min-height' for the element
+// ----------------------------------------------------------------------------------------------
+@mixin square($size) {
+  width: $size;
+  min-width: $size;
+  height: $size;
+  min-height: $size;
+}
+
+// --------------------------------------------------------------
+//   POSITION - Mixin for setting 'position'-related attributes
+// --------------------------------------------------------------
+@mixin position($position, $top: false, $right: false, $bottom: false, $left: false, $transform: false) {
+  position: $position;
+
+  @if $top {
+    top: $top;
+  }
+
+  @if $right {
+    right: $right;
+  }
+
+  @if $bottom {
+    bottom: $bottom;
+  }
+
+  @if $left {
+    left: $left;
+  }
+
+  @if $transform {
+    transform: $transform;
+  }
+}
+
+// ---------------------------------------------------------------------------------------------
+//   ABSOLUTE - Mixin for setting 'position: absolute;' and relevant positions for the element
+// ---------------------------------------------------------------------------------------------
+@mixin absolute($top: false, $right: false, $bottom: false, $left: false, $transform: false) {
+  @include position(absolute, $top, $right, $bottom, $left, $transform);
+}

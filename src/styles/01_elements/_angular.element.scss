@@ -1,0 +1,13 @@
+// -------------------------------------------
+//   ANGULAR - Stylings for Angular elements
+// -------------------------------------------
+router-outlet {
+  display: none;
+}
+
+mb-root,
+ng-component {
+  @include flex(column, $gsb: 1 0 0);
+  height: 100%;
+  width: 100%;
+}

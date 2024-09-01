@@ -1,55 +1,47 @@
+@import 'helpers';
+
 :host {
-  display: flex;
-  align-items: center;
+  $height: px-to-rem(30px);
+
+  @include flex($align: center);
+  @include typography(light);
+  @include transition(color, background-color);
   position: relative;
-  height: 30px;
-  width: 80px;
-  min-width: 72px;
-  border-radius: 15px;
-  color: white;
-  background-color: #bdc3c7;
-  transition:
-    background-color ease-in-out 0.3s,
-    color ease-in-out 0.3s;
+  height: $height;
+  width: px-to-rem(80px);
+  min-width: px-to-rem(72px);
+  border-radius: calc(#{$height} / 2);
+  background-color: neutral-color(1);
 
   &.active {
-    background-color: #33485f;
+    background-color: neutral-color(3);
   }
 }
 
 .switch {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  flex: 1 0 0;
+  @include flex(row, center, center, 1 0 0, spacing(3x));
+  @include transition(padding);
   height: 100%;
-  padding-left: 30px;
-  padding-right: 12px;
-  transition: padding ease-in-out 0.3s;
+  padding-left: spacing(8x);
+  padding-right: spacing(3x);
   cursor: pointer;
 
   &::after {
+    @include absolute(spacing(1x), $left: spacing(1x));
+    @include square(px-to-rem(22px));
+    @include transition(left, background-color);
     content: '';
-    position: absolute;
-    top: 4px;
-    left: 4px;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    background-color: #7e8b9a;
-    transition:
-      left ease-in-out 0.3s,
-      background-color ease-in-out 0.3s;
+    border-radius: border-radius(circle);
+    background-color: neutral-color(2);
   }
 
   &--active {
-    padding-left: 12px;
-    padding-right: 30px;
+    padding-left: spacing(3x);
+    padding-right: spacing(8x);
 
     &::after {
-      left: calc(100% - 26px);
-      background-color: #1ece6d;
+      left: calc(100% - #{px-to-rem(26px)});
+      background-color: status-color(green);
     }
   }
 

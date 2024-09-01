@@ -1,0 +1,62 @@
+// -------------------------------------------------
+//   HEADINGS:  <h1>, <h2>, <h3>, <h4>, <h5>, <h6>
+// -------------------------------------------------
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  @include typography(dark, xsmall, bold);
+  @include media(md) {
+    font-size: font-size(small);
+  }
+  margin: 0;
+  text-transform: uppercase;
+}
+
+h1,
+.h1 {
+  font-size: font-size(xlarge);
+  @include media(md) {
+    font-size: font-size(xxlarge);
+  }
+}
+
+h2,
+.h2 {
+  font-size: font-size(large);
+  @include media(md) {
+    font-size: font-size(xlarge);
+  }
+}
+
+h3,
+.h3 {
+  font-size: font-size(medium);
+  @include media(md) {
+    font-size: font-size(large);
+  }
+}
+
+h4,
+.h4 {
+  font-size: font-size(regular);
+  @include media(md) {
+    font-size: font-size(medium);
+  }
+}
+
+h5,
+.h5 {
+  font-size: font-size(small);
+  @include media(md) {
+    font-size: font-size(regular);
+  }
+}

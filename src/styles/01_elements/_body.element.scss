@@ -1,0 +1,9 @@
+// ----------------------------------------------
+//   BODY - default stylings for <body> element
+// ----------------------------------------------
+body {
+  @include flex(column);
+  @include typography(dark, regular, regular, normal, primary);
+  min-height: 100vh;
+  margin: 0;
+}

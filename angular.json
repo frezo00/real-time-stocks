@@ -39,7 +39,10 @@
                 "input": "public"
               }
             ],
-            "styles": ["src/styles.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["./src/styles/00_helpers"]
+            },
+            "styles": ["./src/styles/global.scss", "./src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -93,7 +96,10 @@
                 "input": "public"
               }
             ],
-            "styles": ["src/styles.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["./src/styles/00_helpers"]
+            },
+            "styles": ["./src/styles/global.scss", "./src/styles.scss"],
             "scripts": []
           }
         },

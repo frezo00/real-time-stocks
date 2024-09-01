@@ -1,0 +1,12 @@
+// ==========================================================
+//   BORDER RADIUS - Varibales for 'border-radius' property
+// ==========================================================
+
+$border-radiuses: (
+  normal: px-to-rem(8px),
+  circle: 50%,
+);
+
+@function border-radius($radius) {
+  @return map-contains($border-radiuses, $radius);
+}
