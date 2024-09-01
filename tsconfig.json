@@ -21,7 +21,8 @@
     "module": "ES2022",
     "lib": ["ES2022", "dom"],
     "paths": {
-      "@mb/stocks": ["./src/app/stocks/index.ts"]
+      "@mb/stocks": ["./src/app/stocks/index.ts"],
+      "@mb/shared/*": ["./src/app/shared/*"]
     }
   },
   "angularCompilerOptions": {

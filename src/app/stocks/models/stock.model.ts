@@ -3,8 +3,9 @@ export const stockNames = ['AAPL', 'GOOG', 'MSFT', 'TSLA'] as const;
 export type StockName = (typeof stockNames)[number];
 
 export type StockType = 'lower' | 'higher' | 'neutral';
+export type StockColor = 'red' | 'green' | 'gray';
 
-export const STOCK_TYPE_COLOR_MAP: Record<StockType, 'red' | 'green' | 'gray'> = {
+export const STOCK_TYPE_COLOR_MAP: Record<StockType, StockColor> = {
   lower: 'red',
   higher: 'green',
   neutral: 'gray',
@@ -26,9 +27,10 @@ export class Stock {
   week52: DateRangePrice;
   statistics: StockStatistics;
 
-  constructor(stock: StockResponse) {
-    const { name, price, dayLowPrice, dayHighPrice, week52LowPrice, week52HighPrice } = stock;
-
+  constructor(
+    { name, price, dayLowPrice, dayHighPrice, week52LowPrice, week52HighPrice }: StockResponse,
+    public isActive = true,
+  ) {
     this.name = name;
     this.price = price + (Math.random() * 10 - 5);
     this.day = new DateRangePrice(dayLowPrice, dayHighPrice);

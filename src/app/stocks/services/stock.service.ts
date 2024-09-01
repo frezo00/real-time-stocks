@@ -27,11 +27,11 @@ export class StockService {
     return timer(0, 3000).pipe(
       withLatestFrom(toObservable(this.$activeStockNames)),
       filter(([_, activeStockNames]) => activeStockNames.includes(stockName)),
-      switchMap(() => of(this._getStockByName(stockName))),
+      switchMap(() => of(this._getMockStockByName(stockName))),
     );
   }
 
-  private _getStockByName(stockName: StockName): Stock | null {
+  private _getMockStockByName(stockName: StockName): Stock | null {
     const stockRaw = stockResponseMocks.find(({ name }) => name === stockName);
     return stockRaw ? new Stock(stockRaw) : null;
   }

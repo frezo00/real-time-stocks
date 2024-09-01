@@ -1,0 +1,13 @@
+<input
+  [ngModel]="$value()"
+  (ngModelChange)="writeValue($event)"
+  [name]="uuid"
+  [id]="uuid"
+  type="checkbox"
+  tabindex="-1"
+  class="switch__input"
+/>
+
+<label [for]="uuid" [class.switch--active]="$value()" class="switch">
+  <span class="switch__text">{{ $value() ? $onText() : $offText() }}</span>
+</label>

@@ -12,13 +12,12 @@
       context: { $implicit: stock.week52, title: '52 Week Range', desktopOnly: true }
     "
   />
-
-  <button (click)="$toggle.emit(false)">Toggle</button>
+  <mb-switch [(ngModel)]="$isActive" />
 }
 
 <ng-template #dateRangePricesTemplate let-dateRangePrices let-title="title" let-desktopOnly="desktopOnly">
   <section [class.stock-card-range--hidden]="desktopOnly" class="stock-card-range">
-    <small class="stock-card-range__label">{{ title }}</small>
+    <small>{{ title | uppercase }}</small>
     <span>{{ dateRangePrices.low }} - {{ dateRangePrices.high }}</span>
   </section>
 </ng-template>

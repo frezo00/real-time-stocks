@@ -1,0 +1,63 @@
+:host {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 30px;
+  width: 80px;
+  min-width: 72px;
+  border-radius: 15px;
+  color: white;
+  background-color: #bdc3c7;
+  transition:
+    background-color ease-in-out 0.3s,
+    color ease-in-out 0.3s;
+
+  &.active {
+    background-color: #33485f;
+  }
+}
+
+.switch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex: 1 0 0;
+  height: 100%;
+  padding-left: 30px;
+  padding-right: 12px;
+  transition: padding ease-in-out 0.3s;
+  cursor: pointer;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: #7e8b9a;
+    transition:
+      left ease-in-out 0.3s,
+      background-color ease-in-out 0.3s;
+  }
+
+  &--active {
+    padding-left: 12px;
+    padding-right: 30px;
+
+    &::after {
+      left: calc(100% - 26px);
+      background-color: #1ece6d;
+    }
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &__text {
+    text-transform: uppercase;
+  }
+}
