@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { StockMockModule } from './mocks';
 import { StocksComponent } from './stocks.component';
 
 describe('StocksComponent', () => {
@@ -8,7 +9,7 @@ describe('StocksComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [StocksComponent],
+      imports: [StocksComponent, StockMockModule],
     }).runInInjectionContext(() => {
       fixture = TestBed.createComponent(StocksComponent);
       component = fixture.componentInstance;

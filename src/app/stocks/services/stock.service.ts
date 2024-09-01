@@ -1,6 +1,5 @@
 import { Injectable, signal } from '@angular/core';
-import { toObservable } from '@angular/core/rxjs-interop';
-import { combineLatest, filter, map, Observable, of, switchMap, tap, timer, withLatestFrom } from 'rxjs';
+import { combineLatest, filter, map, Observable, of, switchMap, tap, timer } from 'rxjs';
 
 import { stockResponseMocks } from '../mocks';
 import { Stock, StockName, stockNames } from '../models';
@@ -24,13 +23,13 @@ export class StockService {
   }
 
   private _getStockData$(stockName: StockName): Observable<Stock | null> {
-    return timer(0, 3000).pipe(
-      withLatestFrom(toObservable(this.$activeStockNames)),
-      filter(([_, activeStockNames]) => activeStockNames.includes(stockName)),
+    return timer(0, 2000).pipe(
+      filter(() => this.$activeStockNames().includes(stockName)),
       switchMap(() => of(this._getMockStockByName(stockName))),
     );
   }
 
+  // Mocks API call
   private _getMockStockByName(stockName: StockName): Stock | null {
     const stockRaw = stockResponseMocks.find(({ name }) => name === stockName);
     return stockRaw ? new Stock(stockRaw) : null;

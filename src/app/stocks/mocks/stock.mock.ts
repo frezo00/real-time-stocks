@@ -1,4 +1,8 @@
+import { NgModule } from '@angular/core';
+import { Observable, of } from 'rxjs';
+
 import { Stock, StockResponse } from '../models';
+import { StockService } from '../services';
 
 export const stockResponseMocks: StockResponse[] = [
   {
@@ -36,3 +40,14 @@ export const stockResponseMocks: StockResponse[] = [
 ];
 
 export const stockMocks = stockResponseMocks.map((stockResponse) => new Stock(stockResponse));
+
+const stockServiceMock = <StockService>{
+  getStocks$(): Observable<Stock[]> {
+    return of(stockMocks);
+  },
+};
+
+@NgModule({
+  providers: [{ provide: StockService, useValue: stockServiceMock }],
+})
+export class StockMockModule {}

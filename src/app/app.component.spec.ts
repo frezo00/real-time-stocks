@@ -15,4 +15,8 @@ describe('AppComponent', () => {
       fixture.detectChanges();
     });
   });
+
+  it('should create instance', () => {
+    expect(component).toBeTruthy();
+  });
 });
