@@ -1,1 +1,0 @@
-import{b as o}from"./chunk-CPOM54PY.js";import"./chunk-FQD6LMEH.js";var r=[{path:"",providers:[o],children:[{path:"",pathMatch:"full",loadComponent:()=>import("./chunk-SKUGYVUU.js").then(t=>t.StocksComponent)}]}];export{r as stockRoutes};
